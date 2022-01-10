@@ -36,7 +36,7 @@ const server = jsonServer.create();
 const router = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 
-const PORT = 3000;
+let PORT = process.env.PORT || 3000;
 
 const state = { velocity: {}, blocked: {} };
 
@@ -59,7 +59,7 @@ server.patch('/engine', (req, res) => {
 
         if (!velocity) return res.status(404).send('Engine parameters for car with such id was not found in the garage. Have you tried to set engine status to "started" before?');
         if (state.blocked[id]) return res.status(429).send('Drive already in progress. You can\'t run drive for the same car twice while it\'s not stopped.');
-        
+
         state.blocked[id] = true;
 
         const x = Math.round(distance / velocity);
