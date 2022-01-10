@@ -10,5 +10,11 @@
   "license": "MIT",
   "devDependencies": {
     "json-server": "^0.16.3"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "json-server": "^0.16.3"
   }
 }
